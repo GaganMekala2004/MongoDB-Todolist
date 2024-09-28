@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>To Do List App</title>
+  <link rel="stylesheet" href="/styles/index.css">
+</head>
+<body>
+  <h1>To Do List App</h1>
+
+  <!-- Search Tasks by Name -->
+  <form action="/tasks" method="GET" style="display:inline;">
+    <label for="search">Search by Task Name:</label>
+    <input type="text" id="search" name="search" placeholder="Enter task name" value="<%= search %>">
+    <button type="submit">Search</button>
+  </form>
+
+  <br>
+
+  <!-- Filter Tasks by Category -->
+  <form action="/tasks" method="GET">
+    <label for="filter">Filter by Category:</label>
+    <select id="filter" name="filter">
+      <option value="All" <%= filter === 'All' ? 'selected' : '' %>>All</option>
+      <option value="Work" <%= filter === 'Work' ? 'selected' : '' %>>Work</option>
+      <option value="Personal" <%= filter === 'Personal' ? 'selected' : '' %>>Personal</option>
+      <option value="Urgent" <%= filter === 'Urgent' ? 'selected' : '' %>>Urgent</option>
+      <option value="Other" <%= filter === 'Other' ? 'selected' : '' %>>Other</option>
+    </select>
+    <button type="submit">Filter</button>
+  </form>
+
+  <br>
+
+  <!-- Add Task Form -->
+  <form action="/add-task" method="POST">
+    <label for="task">Add a new task:</label>
+    <input type="text" id="task" name="task" placeholder="Enter your task here" required>
+
+    <br>
+
+    <!-- Task Category -->
+    <label for="category">Choose a category:</label>
+    <select id="category" name="category" required>
+      <option value="Work">Work</option>
+      <option value="Personal">Personal</option>
+      <option value="Urgent">Urgent</option>
+      <option value="Other">Other</option>
+    </select>
+
+    <br>
+
+    <!-- Task Due Date -->
+    <label for="dueDate">Due Date:</label>
+    <input type="date" id="dueDate" name="dueDate" required>
+
+    <br>
+
+    <button type="submit">Add Task</button>
+  </form>
+
+  <br>
+
+  <!-- Task List -->
+  <ol>
+    <% tasks.forEach(function(task){ %>
+      <li>
+        <!-- Checkbox to delete task -->
+        <form action="/delete-task" method="POST" style="display:inline;">
+          <input type="checkbox" name="taskId" value="<%= task._id %>" onchange="this.form.submit()">
+        </form>
+
+        <!-- Task details container -->
+        <div class="task-container">
+          <!-- Task name and category -->
+          <span><%= task.name %> - <strong>(<%= task.category %>)</strong></span>
+          
+          <!-- Due Date -->
+          <em>Due: <%= task.dueDate ? task.dueDate.toDateString() : "No due date" %></em>
+        </div>
+
+        <!-- Edit task form -->
+        <form action="/edit-task" method="POST" style="display:inline;">
+          <input type="text" name="updatedTaskName" placeholder="Edit task" required>
+          <input type="hidden" name="taskId" value="<%= task._id %>">
+          <button type="submit">Edit</button>
+        </form>
+  
+        <!-- Edit due date form -->
+        <form action="/edit-due-date" method="POST" style="display:inline;">
+          <input type="date" name="updatedDueDate" placeholder="Edit due date">
+          <input type="hidden" name="taskId" value="<%= task._id %>">
+          <button type="submit">Update Due Date</button>
+        </form>
+      </li>
+    <% }); %>
+  </ol>
+
+  <%- include("partials/footer.ejs") %>
+</body>
+</html>

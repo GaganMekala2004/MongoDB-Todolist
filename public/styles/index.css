@@ -1,0 +1,153 @@
+body {
+    background: linear-gradient(to bottom right, #2241DD, #22DDBE); /* Gradient background */
+    font-family: 'Arial', sans-serif;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    display: flex; /* Use Flexbox for centering */
+    flex-direction: column; /* Stack elements vertically */
+    align-items: center; /* Center horizontally */
+    height: 100vh; /* Full height of the viewport */
+}
+
+h1 {
+    color: #fff; /* White text for header */
+    margin-top: 20px;
+    font-size: 2.5em; /* Large font size for the title */
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
+}
+
+form {
+    background-color: rgba(255, 255, 255, 0.9); /* Slightly transparent white background */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    width: 90%; /* Full width for smaller screens */
+    max-width: 500px; /* Max width for larger screens */
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #2241DD; /* Dark blue text for labels */
+}
+
+input[type="text"],
+input[type="date"],
+select {
+    width: calc(100% - 20px); /* Full width minus padding */
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    transition: border-color 0.3s;
+}
+
+input[type="text"]:focus,
+input[type="date"]:focus,
+select:focus {
+    border-color: #22DDBE; /* Teal border on focus */
+    outline: none;
+}
+
+button {
+    background-color: #22DDBE; /* Teal button */
+    color: #fff; /* White text for button */
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
+}
+
+button:hover {
+    background-color: #2241DD; /* Darker blue on hover */
+    transform: translateY(-2px); /* Slight lift effect */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Shadow on hover */
+}
+
+ol {
+    list-style: none; /* Remove default list styling */
+    padding: 0; /* Remove default padding */
+    margin: 10px 0; /* Margin around task list */
+    max-width: 800px; /* Max width for larger screens */
+    width: 500%; /* Full width */
+}
+
+li:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow on hover */
+}
+
+li {
+    background-color: rgba(255, 255, 255, 0.9); /* Slightly transparent white for task items */
+    border-radius: 5px;
+    margin-left: 130px; /* Space for the checkbox */
+    padding: 10px; /* Padding for a larger look */
+    margin-bottom: 10px; /* Margin between task items */
+    display: flex; /* Use Flexbox for layout */
+    align-items: center; /* Center items vertically */
+    justify-content: space-between; /* Space between items */
+    max-width: 550px; /* Increased max width for task items */
+    width: 100%; /* Allow list item to fill available width */
+    overflow: auto; /* Prevent overflow */
+}
+
+li label {
+    flex-grow: 1; /* Allow label to take remaining space */
+    margin-right: 10px; /* Space between label and checkbox */
+    font-weight: bold; /* Bold text for task names */
+    overflow: hidden; /* Prevent text overflow */
+    white-space: nowrap; /* Prevent text wrapping */
+    text-overflow: ellipsis; /* Add ellipsis if text overflows */
+}
+
+li em {
+    font-size: 1.2em; /* Increased font size for due date */
+    color: #777; /* Light grey color for due date */
+    margin-left: 10px; /* Added left margin for spacing */
+    padding: 5px; /* Added padding for more space around the text */
+}
+
+/* Style for the checkbox form */
+li form {
+    margin: 0; /* Remove margin */
+    padding: 0; /* Remove padding */
+    display: flex; /* Use flex for alignment */
+    align-items: center; /* Center the checkbox */
+}
+
+/* Style for the checkbox */
+input[type="checkbox"] {
+    width: 15px; /* Fixed width for checkbox */
+    height: 15px; /* Fixed height for checkbox */
+    margin-left: 5px; /* Margin to the left of checkbox for spacing */
+    appearance: none; /* Remove default styling */
+    border: 2px solid #2241DD; /* Border color for checkbox */
+    border-radius: 2px; /* Slight rounding for a smoother look */
+}
+
+input[type="checkbox"]:checked {
+    background-color: #22DDBE; /* Background color when checked */
+    border-color: #22DDBE; /* Border color when checked */
+}
+
+input[type="checkbox"]:hover {
+    border-color: #22DDBE; /* Change border color on hover */
+}
+
+.footer {
+    margin-top: auto; /* Push footer to bottom */
+    font-size: 14px;
+    color: #fff; /* White text for footer */
+    text-align: center;
+}
+
+/* Specific styles for edit and update buttons */
+li button {
+    padding: 5px 10px; /* Decreased padding */
+    font-size: 12px; /* Smaller font size */
+    margin-left: 5px; /* Small space between buttons */
+}
